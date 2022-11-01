@@ -11,10 +11,10 @@ soup = BeautifulSoup(data.text, 'html.parser')
 log1 = soup.select('body > div.application-main > main > div.container-xl.px-3.px-md-4.px-lg-5 > div > div.Layout-main > div:nth-child(2) > div > div.mt-4.position-relative > div.js-yearly-contributions > div > div > div > svg > g > g:nth-child(53)')
 log2 = soup.select('body > div.application-main > main > div.container-xl.px-3.px-md-4.px-lg-5 > div > div.Layout-main > div:nth-child(2) > div > div.mt-4.position-relative > div.js-yearly-contributions > div > div > div > svg > g > g:nth-child(51)')
 
-log_all = soup.select_one('body > div.application-main > main > div.container-xl.px-3.px-md-4.px-lg-5 > div > div.Layout-main > div:nth-child(2) > div > div.mt-4.position-relative > div.js-yearly-contributions > div > div > div > svg > g > g:nth-child(53) > rect:last-child')
-today = log_all['data-date']
-work = log_all['data-level']
+log_all = soup.select_one('#user-profile-frame > div > div.mt-4.position-relative > div.js-yearly-contributions > div > div > div > svg > g > g:nth-child(53) > rect:nth-last-child(1)')
+# today = log_all['data-date']
+# work = log_all['data-level']
 
-print(type(today), type(work));
+print(log_all);
 
 # 1, 2~3, 4~5, 6
