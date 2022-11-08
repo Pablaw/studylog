@@ -6,25 +6,119 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>열정🔥학습기록</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <!--    부트스트랩 추가-->
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
-<!--    제이쿼리 추가-->
+    <!--    제이쿼리 추가-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script crossorigin="anonymous"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-
+        :root{
+            --title: 'Gugi', cursive;
+            --titleSize: 5vh;
+        }
+        .header{
+            width: 100vw;
+            height: 6.6vh;
+            border: dashed 2px gray; 
+            font-family: var(--title);
+            font-size: var(--titleSize);
+            text-align: center;
+        }
+        .profileSection{
+            width: 80vw;
+            height: 30vh;
+            margin: 0 auto;
+            display: grid;
+            grid-template-rows: repeat(2, 30%);
+            grid-template-columns: repeat(2, 20%);
+            justify-content: center;
+            align-content: center;
+            gap: 30px;
+            border: dashed 2px gray;    
+        }
+        .githubBtn{
+            background-image: url("https://cdn-icons-png.flaticon.com/512/25/25231.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .velgoBtn{
+            background-image: url("https://pbs.twimg.com/profile_images/1228368893321736193/Ov0og7E8_400x400.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .notionBtn{
+            background-image: url("https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb8KTEj%2Fbtrn83lyP6L%2FTIxBbjy6ym4i61EF0N4j3K%2Fimg.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .instaBtn{
+            background-image: url("https://t1.daumcdn.net/cfile/tistory/99B6AB485D09F2132A");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .githubLog{
+            display: flex;
+            width: 100vw;
+            height: 24.5vh;
+            background-color: #0D1117;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 94vw;
+            height: 21.5vh; 
+            background-color: #0D1117;
+            border: solid 2px #1f232a;
+            border-radius: 3px;  
+        }
+        .gitGrass{
+            width: 87vw;
+            height: 15.5vh; 
+            display: grid;
+            margin: auto 0;
+            grid-template-columns: repeat(32, 1fr);
+            grid-template-rows: repeat(7, 1fr);
+        }
+        .g1{
+            background-color: #0e4429;
+        }
+        .blogSection{
+            width: 100vw;
+            height: 24.5vh;
+            border: dashed 2px gray;  
+        }
+        .footer{
+            width: 100vw;
+            height: 6.6vh;
+            border: dashed 2px gray;   
+        }
+        .copyright {
+            color: #969696;
+            text-align: center;
+        }
     </style>
     <script>
-        function getGitData() {
+        const getGitData = () => {
+            /* sweet alert
             Swal.fire(
                 'Good job!',
                 '접속되었습니다',
                 'success'
             );
+            */
             $.ajax({
             type: 'GET',
             url: '/githublog',
@@ -42,34 +136,50 @@
         $(document).ready(function () {
             getGitData();
         });
+        const testfn = () => {
+            console.log('clicked!');
+        }
     </script>
 </head>
 <body>
     <div class="header">
         <div class="title">Pablaw's Study log</div>
     </div>
-    <div calss="profileSection">
-        <div class="content">
-            <div id="date_cotain" class="shadow p-3 mb-5 bg-body rounded">
-                <div class="date">
-                    <div>오늘의 날짜</div>
-                    <div id="today"></div>
-                </div>
-            </div>
-            <div id="work_cotain" class="shadow p-3 mb-5 bg-body rounded">
-                <div class="work">
-                    <div>오늘의 깃헙 레벨</div>
-                    <div id="work_today"></div>
-                </div>
-            </div>
-        </div>
+    <div class="profileSection">
+        <div id="github" class="githubBtn"></div>
+        <div class="velgoBtn" onclick="testfn()"></div>
+        <div class="notionBtn"></div>
+        <div class="instaBtn"></div>
     </div>
     <div class="githubLog">
-        <div>깃헙 잔디 크롤링 구역</div>
+        <div class="container">
+            <div class="monthTxt"></div>
+            <div class="gitGrass">
+                <div class="g1"></div>
+                <div class="g2"></div>
+                <div class="g3"></div>
+                <div class="g4"></div>
+            </div>
+            <div class="gitLevel">
+                <div class="desc"></div>
+                <div class="icon"></div>
+            </div>
+        </div>
+        
     </div>
     <div class="blogSection">
         <div>블로그 기록 구역</div>
     </div>
-    <div class="footer"></div>
+    <div class="footer">
+        <div class="copyright">Copyright pablaw. All rights reserved.</div>
+    </div>
+    <div class="gitTest">
+        <div class="date">
+            <div>오늘의 날짜 <span id="today"></span></div>
+        </div>
+        <div class="work">
+            <div>오늘의 깃헙 레벨 <span id="work_today"></span></div>
+        </div>
+    </div>
 </body>
 </html>
