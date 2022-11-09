@@ -75,7 +75,8 @@
             align-items: center;
         }
         .container{
-            display: flex;
+            display: grid;
+            grid-template-rows: 10px 75px;
             justify-content: center;
             align-items: center;
             width: 94vw;
@@ -84,13 +85,24 @@
             border: solid 2px #1f232a;
             border-radius: 3px;  
         }
+        .monthTxt{
+            color: white;
+            justify-content: space-around;
+            margin-top: 5%;
+        }
+        .monthTxt > text {
+            margin-right: 15%;
+        }
         .gitGrass{
             width: 87vw;
             height: 15.5vh; 
             display: grid;
-            margin: auto 0;
-            grid-template-columns: repeat(32, 1fr);
+            margin: 17% 0 0 0;
+            grid-template-columns: repeat(21, 1fr);
             grid-template-rows: repeat(7, 1fr);
+        }
+        .gitGrass > div {
+            border-radius: 3px;
         }
         .g1{
             background-color: #0e4429;
@@ -124,12 +136,22 @@
             url: '/githublog',
             data: {},
             success: function (response) {
-                const date = Object.values(response)[0][0]
-                const work = Object.values(response)[0][1]
-                console.log(date, work);
+                // console.log(typeof gitGrass);
+                const date = response['gitToday'][0]
+                const work = response['gitToday'][1]
+
+                const d_0month = response['gitGrass'][0]
+                const d_1month = response['gitGrass'][1]
+                const d_2month = response['gitGrass'][2]
+                const d_3month = response['gitGrass'][3]
+                console.log(response['gitGrass']);
 
             $('#today').append(date);
             $('#work_today').append(work);
+            $('.d-0month').append(d_0month);
+            $('.d-1month').append(d_1month);
+            $('.d-2month').append(d_2month);
+            $('.d-3month').append(d_3month);
             }
         })
         }
@@ -146,14 +168,19 @@
         <div class="title">Pablaw's Study log</div>
     </div>
     <div class="profileSection">
-        <div id="github" class="githubBtn"></div>
-        <div class="velgoBtn" onclick="testfn()"></div>
-        <div class="notionBtn"></div>
-        <div class="instaBtn"></div>
+        <a id="github" class="githubBtn" href="https://github.com/Pablaw"></a>
+        <a class="velgoBtn" href="https://velog.io/@pablaw7"></a>
+        <a class="notionBtn" href="https://www.notion.so/Pablaw-s-147f2a1e1bdb409ebbea31ce9d661279"></a>
+        <a class="instaBtn" href="https://www.instagram.com/godlovespoor/?next=%2F"></a>
     </div>
     <div class="githubLog">
         <div class="container">
-            <div class="monthTxt"></div>
+            <div class="monthTxt">
+                <text class="d-3month"></text>
+                <text class="d-2month"></text>
+                <text class="d-1month"></text>
+                <text class="d-0month"></text>
+            </div>
             <div class="gitGrass">
                 <div class="g1"></div>
                 <div class="g2"></div>
