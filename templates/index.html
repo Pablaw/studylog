@@ -145,9 +145,32 @@
         }
         $(document).ready(function () {
             getGitData();
+            set_temp();
         });
         const testfn = () => {
             console.log('clicked!');
+        }
+
+        function set_temp() {
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/weather/seoul",
+                data: {},
+                success: function (response) {
+                    let temp_seoul = response['temp'];
+                    $('#temp_seoul').text(`서울 기온: ${temp_seoul}℃`);
+                }
+            });
+            //제주 기온 API 호출
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/weather/jeju",
+                data: {},
+                success: function (response) {
+                    let temp_jeju = response['temp'];
+                    $('#temp_jeju').text(`제주 기온: ${temp_jeju}℃`);
+                }
+            });
         }
     </script>
 </head>
@@ -195,6 +218,10 @@
     </div>
     <div class="blogSection">
         <div>블로그 기록 구역</div>
+    </div>
+    <div class="tempDiv">
+        <div id="temp_seoul" class=""></div>
+        <div id="temp_jeju" class=""></div>
     </div>
     <div class="footer">
         <div class="copyright">Copyright pablaw. All rights reserved.</div>
